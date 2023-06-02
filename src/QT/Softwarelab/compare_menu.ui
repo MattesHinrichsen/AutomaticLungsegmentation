@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Compare_Menu</class>
+ <widget class="QDialog" name="Compare_Menu">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>397</width>
+    <height>310</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Compare</string>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>true</bool>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0" colspan="4">
+    <widget class="QListWidget" name="list_compare"/>
+   </item>
+   <item row="2" column="0" colspan="2">
+    <widget class="QLabel" name="label_value_two">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Every segmentation in a scan has been assigned a value.&lt;/p&gt;&lt;p&gt;Usually the background has the value 0.&lt;/p&gt;&lt;p&gt;And the lung has the value 1, if nothing else is segmented.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="text">
+      <string>Lung value in above selected segmentation:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2">
+    <widget class="QSpinBox" name="spinBox_value_two">
+     <property name="minimum">
+      <number>1</number>
+     </property>
+     <property name="value">
+      <number>1</number>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="3">
+    <widget class="QLabel" name="label_class_one">
+     <property name="text">
+      <string>is: -</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="3">
+    <widget class="QLabel" name="label_class_two">
+     <property name="text">
+      <string>is: -</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="3">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="2">
+    <widget class="QLabel" name="label_value_one">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Every segmentation in a scan has been assigned a value.&lt;/p&gt;&lt;p&gt;Usually the background has the value 0.&lt;/p&gt;&lt;p&gt;And the lung has the value 1, if nothing else is segmented.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="text">
+      <string>Lung value in original segmentation:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="QSpinBox" name="spinBox_value_one">
+     <property name="minimum">
+      <number>1</number>
+     </property>
+     <property name="value">
+      <number>1</number>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0" colspan="4">
+    <widget class="QLabel" name="value_label">
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>Compare_Menu</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>390</x>
+     <y>303</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>266</x>
+     <y>177</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>Compare_Menu</receiver>
+   <slot>run_comparison()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>390</x>
+     <y>303</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>229</x>
+     <y>177</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBox_value_one</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>Compare_Menu</receiver>
+   <slot>changed_class_one()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>190</x>
+     <y>247</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>153</x>
+     <y>292</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBox_value_two</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>Compare_Menu</receiver>
+   <slot>changed_class_two()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>205</x>
+     <y>275</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>200</x>
+     <y>290</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>list_compare</sender>
+   <signal>itemSelectionChanged()</signal>
+   <receiver>Compare_Menu</receiver>
+   <slot>changed_class_two()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>34</x>
+     <y>203</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>5</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>display_number()</slot>
+  <slot>run_comparison()</slot>
+  <slot>changed_class_one()</slot>
+  <slot>changed_class_two()</slot>
+ </slots>
+</ui>
